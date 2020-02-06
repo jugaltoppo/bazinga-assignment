@@ -9,7 +9,10 @@ mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
 
-mongoose.connect("mongodb://localhost/bazinga");
+// mongodb+srv://bazinga:bazinga@cluster0-kebuy.mongodb.net/test?retryWrites=true&w=majority
+console.log(process.env.MONGOURL)
+var url=process.env.MONGOURL;
+mongoose.connect(url);
 
 app.set("view engine","ejs");
 app.use(bodyParser.json());
