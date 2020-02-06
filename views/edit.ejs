@@ -1,0 +1,12 @@
+<h1>Edit page</h1>
+
+<form action="/bazinga/<%= data._id %>?_method=PUT" method="POST">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="order[name]" value="<%= data.name %>">
+    <label for="email">Email</label>
+    <input type="text" id="email" name="order[email]" value="<%= data.email %>">
+    <label for="phone">Phone number</label>
+    <input type="number" id="phone" name="order[phone]" value="<%= data.phone %>">
+    <button>Submit</button>
+</form>
+<%= data %>

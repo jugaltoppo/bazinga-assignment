@@ -1,0 +1,7 @@
+<h1>Welcome to Orders Database</h1>
+<% data.forEach(function(e){ %>
+    <a href="/bazinga/<%= e._id %>">View order details</a>
+    <p>name: <%= e.name %></p>
+    <p>email: <%= e.email %></p>
+    <hr>
+<% }) %>
