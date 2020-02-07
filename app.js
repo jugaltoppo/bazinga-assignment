@@ -19,11 +19,11 @@ var url=process.env.MONGOURL;
 mongoose.connect(url);
 
 app.set("view engine","ejs");
-app.use(bodyParser.json({type: function (req) {
-    return req.headers['content-type'] === '*/*'
-  }}))
-// app.use(bodyParser.json());
+// app.use(bodyParser.json({type: function (req) {
+//     return req.headers['content-type'] === '*/*'
+//   }}))
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.use(methodOverride("_method"));
 
 var dataSchema = new mongoose.Schema({
