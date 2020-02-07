@@ -1,7 +1,6 @@
 var express = require("express");
 var app = express();
 var mongoose = require("mongoose");
-var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 
 // var customParser = bodyParser.json({type: function(req) {
@@ -22,8 +21,9 @@ app.set("view engine","ejs");
 // app.use(bodyParser.json({type: function (req) {
 //     return req.headers['content-type'] === '*/*'
 //   }}))
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+
+app.use(express.urlencoded());
+app.use(express.json());
 app.use(methodOverride("_method"));
 
 var dataSchema = new mongoose.Schema({
@@ -95,7 +95,7 @@ app.put("/bazinga/:id", function(req, res){
     });
 });
 
-app.post("/bazinga/webhook", function(req, res){
+app.post("/", function(req, res){
     var data=req.body;
     console.log(data)
     Data.create(data, function(err, dataCreated){
