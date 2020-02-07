@@ -18,10 +18,10 @@ app.set("view engine","ejs");
 
 
 app.use(express.urlencoded({extended : true}));
-app.use(express.json({type: function (req) {
-    return req.headers['content-type'] === 'application/json'
-  }}))
-// app.use(express.json());
+// app.use(express.json({type: function (req) {
+//     return req.headers['content-type'] === 'application/json'
+//   }}))
+app.use(express.json());
 app.use(methodOverride("_method"));
 
 var dataSchema = new mongoose.Schema({
