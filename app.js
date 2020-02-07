@@ -9,13 +9,13 @@ mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
 
-// mongodb+srv://bazinga:bazinga@cluster0-kebuy.mongodb.net/test?retryWrites=true&w=majority
+
 console.log(process.env.MONGOURL)
 var url=process.env.MONGOURL;
 mongoose.connect(url);
 
 app.set("view engine","ejs");
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 
@@ -30,7 +30,7 @@ var dataSchema = new mongoose.Schema({
 });
 var Data = mongoose.model("Data", dataSchema);
 
-// Data.create({name: { first: "jugal", last: "sekhar"}, age: 22}, function(err, data){
+// Data.create({email: "jugal@email.com", name: "jugal"}, function(err, data){
 //     if(err){
 //         console.log(err);
 //     }else{
