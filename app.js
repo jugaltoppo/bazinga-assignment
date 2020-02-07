@@ -4,6 +4,10 @@ var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 
+// var customParser = bodyParser.json({type: function(req) {
+//     return req.headers['content-type'] === '*/*'
+// }})
+
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
@@ -15,6 +19,9 @@ var url=process.env.MONGOURL;
 mongoose.connect(url);
 
 app.set("view engine","ejs");
+app.use(bodyParser.json({type: function (req) {
+    return req.headers['content-type'] === '*/*'
+  }}))
 // app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
@@ -89,8 +96,8 @@ app.put("/bazinga/:id", function(req, res){
 });
 
 app.post("/bazinga/webhook", function(req, res){
-    var data= req.body;
-    // console.log(data)
+    var data=req.body;
+    console.log(data)
     Data.create(data, function(err, dataCreated){
         if(err){
             console.log("error");
