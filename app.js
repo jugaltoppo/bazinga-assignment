@@ -3,9 +3,6 @@ var app = express();
 var mongoose = require("mongoose");
 var methodOverride = require("method-override");
 
-// var customParser = bodyParser.json({type: function(req) {
-//     return req.headers['content-type'] === '*/*'
-// }})
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
@@ -18,12 +15,13 @@ var url=process.env.MONGOURL;
 mongoose.connect(url);
 
 app.set("view engine","ejs");
-// app.use(bodyParser.json({type: function (req) {
-//     return req.headers['content-type'] === '*/*'
-//   }}))
 
-app.use(express.urlencoded());
-app.use(express.json());
+
+app.use(express.urlencoded({extended : true}));
+app.use(express.json({type: function (req) {
+    return req.headers['content-type'] === 'application/json'
+  }}))
+// app.use(express.json());
 app.use(methodOverride("_method"));
 
 var dataSchema = new mongoose.Schema({
