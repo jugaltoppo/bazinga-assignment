@@ -5,6 +5,18 @@
 <!-- <p>number: <%= showData.number %></p> -->
 <p>price: <%= showData.total_price_usd %></p>
 <p>user id: <%= showData.user_id %></p>
-<p>phone number: <%= showData.phone %></p>
+<!-- <p>phone number: <%= showData.phone %></p> -->
 <p>order number: <%= showData.order_number %></p>`
+<p>Shipping Address: 
+    <ul>
+        <li>name: <%= showData.shipping_address.name %></li>
+        <li>address 1: <%= showData.shipping_address.address1 %></li>
+        <li>address 2: <%= showData.shipping_address.address2 %></li>
+        <li>city: <%= showData.shipping_address.city %></li>
+        <li>zip: <%= showData.shipping_address.zip %></li>
+        <li>phone: <%= showData.shipping_address.phone %></li>
+        <li>country code: <%= showData.shipping_address.country_code %></li>
+
+    </ul>
+</p>
 <a href="/">Go Home</a>

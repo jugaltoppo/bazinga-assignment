@@ -25,9 +25,9 @@ var dataSchema = new mongoose.Schema({
     name: String,
     number: String,
     total_price_usd: String,
-    user_id: String,
     phone: String,
-    order_number: String
+    order_number: String,
+    shipping_address: Object
 });
 var Data = mongoose.model("Data", dataSchema);
 
