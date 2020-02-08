@@ -3,7 +3,6 @@ var app = express();
 var mongoose = require("mongoose");
 var methodOverride = require("method-override");
 
-
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
@@ -22,6 +21,7 @@ app.use(express.urlencoded({extended : true}));
 //     return req.headers['content-type'] === 'application/json'
 //   }}))
 app.use(express.json());
+// app.use(express.raw());
 app.use(methodOverride("_method"));
 
 var dataSchema = new mongoose.Schema({
