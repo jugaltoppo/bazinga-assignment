@@ -17,11 +17,7 @@ app.set("view engine","ejs");
 
 
 app.use(express.urlencoded({extended : true}));
-// app.use(express.json({type: function (req) {
-//     return req.headers['content-type'] === 'application/json'
-//   }}))
 app.use(express.json());
-// app.use(express.raw());
 app.use(methodOverride("_method"));
 
 var dataSchema = new mongoose.Schema({
@@ -34,14 +30,6 @@ var dataSchema = new mongoose.Schema({
     order_number: String
 });
 var Data = mongoose.model("Data", dataSchema);
-
-// Data.create({email: "jugal@email.com", name: "jugal"}, function(err, data){
-//     if(err){
-//         console.log(err);
-//     }else{
-//         console.log(data + " created")
-//     }
-// });
 
 //index
 app.get("/", function(req, res){
@@ -83,7 +71,6 @@ app.get("/bazinga/:id/edit", function(req, res){
 
 //update
 app.put("/bazinga/:id", function(req, res){
-    // console.log(req.body.email);
     Data.findByIdAndUpdate(req.params.id, req.body.order, function(err, updated){
         if(err){
             console.log(err);
@@ -93,6 +80,7 @@ app.put("/bazinga/:id", function(req, res){
     });
 });
 
+//webhook handler
 app.post("/", function(req, res){
     var data=req.body;
     console.log(data)
@@ -100,7 +88,7 @@ app.post("/", function(req, res){
         if(err){
             console.log("error");
         }else{
-            // res.render("bazingadata.ejs", {data: dataCreated})
+            res.send("success");
         }
     });
 });
